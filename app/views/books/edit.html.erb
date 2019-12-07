@@ -1,0 +1,14 @@
+<h1>Editing Book</h1>
+<div>
+	<%= flash[:notice] %>
+	<%= form_for(@book) do |f| %>
+    <div>
+	<p>Title</p>
+        <%= f.text_field :title, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"title"%>
+    <p>Opinion</p>
+        <%= f.text_field :body, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"body"%>
+
+        <p><%= f.submit "Update Book" %></p>
+</div>
+    <% end %>
+</div>

@@ -1,0 +1,27 @@
+<h1>User info</h1>
+<%= flash[:notice] %>
+<% if @user.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div>
+	<%= form_for(@user) do |f| %>
+    <div>
+	<p>Name</p>
+        <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"name"%>
+    <p>Image</p>
+    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+    <p><%= f.attachment_field :profile_image, placeholder: "Image" %></p>
+
+    <p>introduction</p>
+        <%= f.text_field :introduction, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"introduction"%>
+
+        <p><%= f.submit "Update User" %></p>
+</div>
+    <% end %>
+</div>
